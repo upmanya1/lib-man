@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Students</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="students-container">
+        <h1>Student List</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Admission Number</th>
+                    <th>Fee Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.admission_number }}</td>
+                    <td>{{ student.fee_status }}</td>
+                    <td>
+                        <a href="{{ url_for('fee_submission', student_id=student.id) }}" class="button">Pay Fee</a>
+                        <a href="{{ url_for('generate_receipt', student_id=student.id) }}" class="button">Generate Receipt</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('add_student') }}" class="button">Add New Student</a>
+    </div>
+</body>
+</html>

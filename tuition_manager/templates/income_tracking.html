@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Tracking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="income-container">
+        <h1>Income Tracking</h1>
+        <p><strong>Track your total income from fee submissions</strong></p>
+        
+        <div class="summary">
+            <h2>Total Income: ₹{{ total_income }}</h2>
+            <p>Showing data for: {{ period }}</p>
+        </div>
+
+        <h3>Income Breakdown</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Admission Number</th>
+                    <th>Amount Paid</th>
+                    <th>Payment Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for payment in payments %}
+                <tr>
+                    <td>{{ payment.student_name }}</td>
+                    <td>{{ payment.admission_number }}</td>
+                    <td>₹{{ payment.amount_paid }}</td>
+                    <td>{{ payment.payment_date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ url_for('view_students') }}" class="button">Back to Students List</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tuition Manager Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Welcome to Tuition Management System</h1>
+    <h2>Total Income: {{ total_income }}</h2>
+    <a href="{{ url_for('add_student') }}">Add New Student</a>
+    <h3>Student List</h3>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Course</th>
+            <th>Fee Paid</th>
+            <th>Action</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.name }}</td>
+            <td>{{ student.course }}</td>
+            <td>{{ student.fee_paid }}</td>
+            <td>
+                <a href="{{ url_for('submit_fee', student_id=student.id) }}">Submit Fee</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('export_data') }}">Export Data</a>
+</body>
+</html>

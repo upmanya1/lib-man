@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Fee</title>
+</head>
+<body>
+    <h1>Submit Fee for {{ student.name }}</h1>
+    <form method="POST">
+        <label>Amount:</label><br>
+        <input type="number" name="amount" required><br>
+        <label>Payment Date:</label><br>
+        <input type="date" name="payment_date" required><br>
+        <button type="submit">Submit Fee</button>
+    </form>
+</body>
+</html>
